@@ -1,0 +1,53 @@
+{
+  "name": "@tir.jp/ephemeral-lettering-canvas",
+  "version": "1.0.0",
+  "description": "Text-to-canvas rendering, independent of WebGL / WebGPU.",
+  "keywords": [
+    "canvas",
+    "text",
+    "texture",
+    "lettering",
+    "webgpu",
+    "webgl",
+    "offscreencanvas"
+  ],
+  "dependencies": {
+    "@tir.jp/is-dev": "^1.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "oxlint": "1.95.0",
+    "playwright": "1.65.1"
+  },
+  "type": "module",
+  "main": "./src/index.mjs",
+  "module": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "lint": "oxlint .",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "PLAYWRIGHT_BROWSERS_PATH=$PWD/tmp/browsers sh -c 'node tests/renderer.playwright.mjs; r=$?; node tests/worker.playwright.mjs; w=$?; [ \"$r\" -eq 0 ] && [ \"$w\" -eq 0 ]'",
+    "install:browsers": "PLAYWRIGHT_BROWSERS_PATH=$PWD/tmp/browsers playwright install chromium"
+  },
+  "author": "ayamada",
+  "license": "Zlib",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayamada/ephemeral-lettering-canvas.git"
+  },
+  "homepage": "https://github.com/ayamada/ephemeral-lettering-canvas#readme",
+  "bugs": {
+    "url": "https://github.com/ayamada/ephemeral-lettering-canvas/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
